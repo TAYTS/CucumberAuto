@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class BackgroundStepDef {
 
@@ -17,7 +18,10 @@ public class BackgroundStepDef {
     @Given("^User need to be on Facebook login page$")
     public void user_need_to_be_on_Facebook_login_page() {
         System.setProperty("webdriver.chrome.driver", "/Users/taytzushieh/CucumberSetup/chromedriver");
-        driver = new ChromeDriver();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setBinary("/usr/bin/google-chrome");
+        chromeOptions.addArguments("--headless");
+        driver = new ChromeDriver(chromeOptions);
         driver.get("https://www.facebook.com/");
     }
 
